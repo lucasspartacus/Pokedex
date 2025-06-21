@@ -53,4 +53,10 @@ ionic serve
 Vá ao seu navegador na url http://localhost:8100/ para usar a aplicação web.
 Na aplicação você pode buscar pelo nome do pokémon usando a barra de pesquisa ou busque pelo pokémon manualmente pelas páginas. Clique em um pokémon para poder ver seus detalhes. Na tela de detalhe é possível adicionar o pokemon aos seus favoritos. 
 Vá até a tela de favoritos para ver seus pokémons favoritos, é possível remover os mesmos dos favoritos.
+
 Foi feita a escolha de utilizar um design semelhante ao de uma pokédex para a aplicação se assemelhar ao jogo, principalmente na versão mobile.
+
+
+Tela home da aplicação:
+
+<img width="357" alt="Image" src="https://github.com/user-attachments/assets/67622076-b190-423f-8d49-731fdeb3c9cb" />
