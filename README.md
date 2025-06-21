@@ -32,7 +32,6 @@ Primeiramente rode o seguinte comando no seus prompt para clonar o repositorio g
 
 ```
 git clone https://github.com/lucasspartacus/Pokedex.git
-
 ```
 
 Entre na pasta pokemonApp.
@@ -40,14 +39,12 @@ Após isso rode o comando abaixo para instalar todas as dependências:
 
 ```
 npm install
-
 ```
 
 Seguindo rode o código abaixo para rodar o projeto:
 
 ```
 ionic serve
-
 ```
 
 Vá ao seu navegador na url http://localhost:8100/ para usar a aplicação web.
