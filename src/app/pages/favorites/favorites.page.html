@@ -1,0 +1,39 @@
+<ion-header class="header-nav">
+    <ion-title>Favoritos</ion-title>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/" aria-label="Go Home">
+        <ion-icon name="home"></ion-icon>
+     </ion-button>
+    </ion-buttons>
+    <div>
+      <span class="dot" style="background-color: red;"></span>
+      <span class="dot" style="background-color: rgb(244, 240, 0);"></span>
+      <span class="dot" style="background-color: rgb(49, 170, 1);"></span>
+    </div>
+</ion-header>
+
+<ion-content class="pokedex-favorites">
+
+  <ion-grid *ngIf="favoritePokemons.length > 0; else noFavorites">
+    <ion-row>
+      <ion-col size="6" size-md="4" *ngFor="let pokemon of favoritePokemons">
+        <ion-card
+          class="pokemon-card"
+          (click)="goToDetails(pokemon.name)"
+        >
+          <img [src]="pokemon.image" class="pokemon-image" />
+          <ion-card-header>
+            <ion-card-title>{{ pokemon.name | titlecase }}</ion-card-title>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ng-template #noFavorites>
+    <ion-text color="medium">
+      <p style="text-align:center; margin-top: 30px;">Você ainda não tem favoritos.</p>
+    </ion-text>
+  </ng-template>
+
+</ion-content>

@@ -1,0 +1,57 @@
+<ion-header class="header-nav" >
+    <ion-title>Pokedex</ion-title>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/favorites" aria-label="Go to Favorites">
+        <ion-icon name="star"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <div>
+      <span class="dot" style="background-color: red;"></span>
+      <span class="dot" style="background-color: rgb(244, 240, 0);"></span>
+      <span class="dot" style="background-color: rgb(49, 170, 1);"></span>
+    </div>
+</ion-header>
+
+
+<ion-content class="pokedex-background">
+  <ion-searchbar
+    animated="true"
+    [(ngModel)]="searchTerm"
+    (ionInput)="searchPokemon()"
+    placeholder="Pesquise por nomes de pokemon"
+   >
+  </ion-searchbar>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6" size-md="4" *ngFor="let pokemon of filteredPokemons">
+        <ion-card
+          class="pokemon-card"
+          (click)="goToDetails(pokemon.name)"
+          [ngStyle]="{ 'background-color': getCardColor(pokemon.types) }"
+        >
+          <img [src]="pokemon.image" class="pokemon-image" />
+
+          <ion-card-header  >
+            <div class="pokemon-name" >
+               <ion-card-title >{{ pokemon.name | titlecase }}</ion-card-title>
+            </div>
+
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-footer class="footer-nav">
+      <div class="ion-buttons">
+        <button class="button-navegate" color="medium" size="large" (click)="previousPage()" [disabled]="page <= 1">
+          <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+        </button>
+        <button class="button-navegate" color="medium" (click)="nextPage()">
+          <ion-icon slot="icon-only" name="arrow-forward-outline"></ion-icon>
+        </button>
+      </div>
+  </ion-footer>
+
+</ion-content>

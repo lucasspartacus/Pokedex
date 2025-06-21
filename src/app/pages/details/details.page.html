@@ -1,0 +1,76 @@
+<ion-header class="header-nav">
+    <ion-title>{{ pokemon?.name | titlecase }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/favorites" aria-label="Go to Favorites">
+        <ion-icon name="star"></ion-icon>
+      </ion-button>
+      <ion-button routerLink="/" aria-label="Go Home">
+        <ion-icon name="home"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+     <div>
+      <span class="dot" style="background-color: red;"></span>
+      <span class="dot" style="background-color: rgb(244, 240, 0);"></span>
+      <span class="dot" style="background-color: rgb(49, 170, 1);"></span>
+    </div>
+</ion-header>
+
+<ion-content *ngIf="pokemon" class="pokedex-details ion-padding">
+
+  <ion-card
+    class="ion-margin pokemon-card"
+    [style.background-color]="getCardColor(pokemon.types)"
+  >
+    <img
+      [src]="pokemon.sprites.front_default"
+      alt="{{ pokemon.name }} image"
+      class="pokemon-detail-image"
+      style="max-width: 200px; margin: 0 auto; display: block;"
+    />
+
+    <ion-card-header class="ion-text-center">
+      <ion-card-title >#{{ pokemon.id }} - {{ pokemon.name | titlecase }}</ion-card-title>
+      <ion-row>
+          <ion-col size="12">
+            <ion-chip *ngFor="let type of pokemon.types" style="background-color: aliceblue;"
+             [style.color]="getCardColor(pokemon.types)"
+            >
+              <ion-label>{{ type.type.name }}</ion-label>
+            </ion-chip>
+          </ion-col>
+      </ion-row>
+    </ion-card-header>
+
+    <ion-card-content class="details-card">
+
+      <ion-grid>
+        <ion-row>
+          <ion-col size="6"><strong>Altura:</strong> {{ pokemon.height }}</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="6"><strong>Peso:</strong> {{ pokemon.weight }}</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12"><strong>Exp base:</strong> {{ pokemon.base_experience }}</ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col size="12">
+            <strong>Habilidades:</strong>
+            <ion-chip *ngFor="let ability of pokemon.abilities" color="tertiary" outline>
+              <ion-label>{{ ability.ability.name }}</ion-label>
+            </ion-chip>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+    </ion-card-content>
+
+    <button class="favorrite-button"  (click)="toggleFavorite()" aria-label="Toggle Favorite" >
+      <ion-icon slot="start" [name]="isFavorite ? 'star' : 'star-outline'"></ion-icon>
+      {{ isFavorite ? 'Remover dos favoritos' : 'Adicionar aos favoritos' }}
+    </button>
+
+  </ion-card>
+
+</ion-content>
